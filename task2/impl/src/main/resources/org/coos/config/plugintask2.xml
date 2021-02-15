@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugins xmlns="http://www.coos.org/PluginXMLSchema">
+
+  <plugin name="${name:-task2}"
+    startLevel="10"
+    class="org.coos.messaging.plugin.actorframe.ActorFrameContainer">
+    <alias>dico.task2</alias>
+    <property name="spec" value="/ApplicationSpec.xml" />
+    <property name="lcmRegEnabled" value="${lcmRegEnabled:-false}" />
+    <property name="lcmRegRequired" value="${lcmRegRequired:-false}" />
+    <property name="lcmPollingInterval" value="${lcmPollingInterval:-false}" />
+    <property name="coosEndpointTimeout" value="${coosEndpointTimeout:-10000}" />
+    <property name="coosEndpointMaxPoolSize" value="${coosEndpointMaxPoolSize:-3}" />
+  </plugin>
+
+</plugins>

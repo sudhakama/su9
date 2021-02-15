@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <artifactId>task2</artifactId>
+    <groupId>task2</groupId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+
+  <groupId>task2</groupId>
+  <artifactId>task2-api</artifactId>
+  <name>task2-api</name>
+
+  <properties>
+    <bundle.symbolicName>task2.api</bundle.symbolicName>
+    <bundle.namespace>task2.api</bundle.namespace>
+  </properties>
+
+  <packaging>bundle</packaging>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.coosproject.messaging</groupId>
+      <artifactId>actorframe-container</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.coosproject.api</groupId>
+      <artifactId>coos-api</artifactId>
+    </dependency>
+  </dependencies>
+</project>

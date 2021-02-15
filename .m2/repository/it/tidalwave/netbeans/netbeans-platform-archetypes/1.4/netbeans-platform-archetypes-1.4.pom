@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>it.tidalwave.superpom</groupId>
+        <artifactId>superpom</artifactId>
+        <version>1.11</version>
+    </parent>
+
+    <groupId>it.tidalwave.netbeans</groupId>
+    <artifactId>netbeans-platform-archetypes</artifactId>
+    <version>1.4</version>
+    <packaging>pom</packaging>
+    <name>Tidalwave NetBeans Platform Archetypes</name>
+    <description>Tidalwave NetBeans Platform Archetypes</description>
+    <inceptionYear>2011</inceptionYear>
+    <url>http://tidalwave.it</url>
+
+    <properties>
+        <scm.repo.url>ssh://hg@bitbucket.org/tidalwave/netbeans-platform-archetype-src</scm.repo.url>
+        <scm.repo.readonly.url>https://bitbucket.org/tidalwave/netbeans-platform-archetype-src</scm.repo.readonly.url>
+        <scm.repo.browse.url>https://bitbucket.org/tidalwave/netbeans-platform-archetype-src/src</scm.repo.browse.url>
+
+        <!-- tidalwave.ci.view>VIEW</tidalwave.ci.view -->
+        <tidalwave.issues>NBPA</tidalwave.issues>
+    </properties>
+
+    <repositories>
+        <repository>
+            <id>releases-oss.sonatype.org</id>
+            <name>Sonatype Releases Repository</name>
+            <url>http://oss.sonatype.org/content/repositories/releases/</url>
+        </repository>
+        <repository>
+            <id>snapshots-oss.sonatype.org</id>
+            <name>Sonatype Snapshots Repository</name>
+            <url>http://oss.sonatype.org/content/repositories/snapshots/</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <distributionManagement>
+        <repository>
+            <id>staging-oss.sonatype.org</id>
+            <name>SonaType Release Repository</name>
+            <url>dav:http://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshots-oss.sonatype.org</id>
+            <name>SonaType Snapshot Repository</name>
+            <url>http://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <!-- Repeated because of http://jira.codehaus.org/browse/SCM-442 -->
+    <scm>
+        <connection>scm:hg:${scm.repo.readonly.url}</connection>
+        <developerConnection>scm:hg:${scm.repo.effective.url}</developerConnection>
+        <url>${scm.repo.browse.url}</url>
+    </scm>
+
+    <build>
+        <extensions>
+            <extension>
+                <groupId>org.apache.maven.archetype</groupId>
+                <artifactId>archetype-packaging</artifactId>
+                <version>${tft.archetype-packaging.version}</version>
+            </extension>
+        </extensions>
+        <plugins>
+            <!-- Needed for setting that inherited = false -->
+            <plugin>
+                <groupId>com.mycila.maven-license-plugin</groupId>
+                <artifactId>maven-license-plugin</artifactId>
+                <inherited>false</inherited>
+                <configuration>
+                    <excludes>
+                        <exclude>LICENSE.txt</exclude>
+                        <exclude>**/src/main/resources/archetype-resources/**</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-archetype-plugin</artifactId>
+                <version>${tft.maven-archetype-plugin.version}</version>
+                <extensions>true</extensions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <modules>
+        <module>platform-archetype</module>
+    </modules>
+
+</project>

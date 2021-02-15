@@ -1,0 +1,184 @@
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>it.tidalwave.superpom</groupId>
+        <artifactId>superpom</artifactId>
+        <version>1.12</version>
+    </parent>
+
+    <groupId>su</groupId>
+    <artifactId>su</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>su (master)</name>
+    <description>su (master)</description>
+
+    <url>http://su.java.net</url>
+    <inceptionYear>2012</inceptionYear>
+
+    <properties>
+        <scm.repo.url>ssh://hg@bitbucket.org/tidalwave/su-src</scm.repo.url>
+        <scm.repo.readonly.url>https://bitbucket.org/tidalwave/su-src</scm.repo.readonly.url>
+        <scm.repo.browse.url>https://bitbucket.org/tidalwave/su-src/src</scm.repo.browse.url>
+        
+        <tidalwave.ci.view>5</tidalwave.ci.view>
+        <tidalwave.issues>5</tidalwave.issues>
+        
+        <tft.lombok.version>0.10.6</tft.lombok.version>
+        <tft.test.listeners>it.tidalwave.util.test.TestLogger</tft.test.listeners>
+
+        <netbeans.brandingToken>su</netbeans.brandingToken>
+        <netbeans.cluster>su</netbeans.cluster>
+        <tft.netbeans.useOSGiDependencies>false</tft.netbeans.useOSGiDependencies>
+
+        <tft.appbundle.name>su</tft.appbundle.name>
+        <tft.appbundle.signature>TDLW</tft.appbundle.signature>
+
+        <openbluesky.version>0.15</openbluesky.version>
+        <thesefoolishthings.version>1.19</thesefoolishthings.version>
+        <libraries.version>1.1.5</libraries.version>
+        <netbeans.version>RELEASE71</netbeans.version>
+        <netbeans.hint.license>Tidalwave-ASF</netbeans.hint.license>
+    </properties>
+
+    <repositories>
+        <repository>
+            <id>releases-oss.sonatype.org</id>
+            <name>Sonatype Releases Repository</name>
+            <url>http://oss.sonatype.org/content/repositories/releases/</url>
+        </repository>
+        <repository>
+            <id>snapshots-oss.sonatype.org</id>
+            <name>Sonatype Snapshots Repository</name>
+            <url>http://oss.sonatype.org/content/repositories/snapshots/</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+    
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>su</groupId>
+                <artifactId>su-module1</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>su</groupId>
+                <artifactId>su-application-customization</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>su</groupId>
+                <artifactId>su-branding</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>su</groupId>
+                <artifactId>su-application</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <!-- TODO: ADD OTHER DEPENDENCY SECTIONS FOR EXPOSED MODULES OF YOUR PROJECT HERE-->  
+        </dependencies>
+    </dependencyManagement>
+    
+    <mailingLists>
+        <mailingList>
+            <name>Continuous Integration</name>
+            <post>ci@su.java.net</post>
+            <archive>http://java.net/projects/su/lists/ci/archive</archive>
+        </mailingList>
+        <mailingList>
+            <name>Developers</name>
+            <post>dev@su.java.net</post>
+            <archive>http://java.net/projects/su/lists/dev/archive</archive>
+        </mailingList>
+    </mailingLists>
+
+    <!-- Repeated because of http://jira.codehaus.org/browse/SCM-442 -->
+    <scm>
+        <connection>scm:hg:${scm.repo.readonly.url}</connection>
+        <developerConnection>scm:hg:${scm.repo.effective.url}</developerConnection>
+        <url>${scm.repo.browse.url}</url>
+    </scm>
+
+    <build>
+        <plugins>
+           <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <properties>
+                        <property>
+                            <name>listener</name>
+                            <value>${tft.test.listeners}</value>
+                        </property>
+                    </properties>
+                </configuration>
+            </plugin>
+            <!-- Needed for setting that inherited = false -->
+            <plugin>
+                <groupId>com.mycila.maven-license-plugin</groupId>
+                <artifactId>maven-license-plugin</artifactId>
+                <inherited>false</inherited>
+                <configuration>
+                    <excludes>
+                        <exclude>LICENSE.txt</exclude>
+                        <exclude>**/*.mf</exclude>
+                        <exclude>**/.revision</exclude>
+                        <exclude>.hgtags</exclude>
+                        <exclude>.hgignore</exclude>
+                    </excludes>
+                </configuration>                
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>deploy-extra-artifacts</id>
+            <build>
+                <plugins>
+                    <!-- Attaches the extra artifacts prepared during the release process by the assembly plugin -->
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>build-helper-maven-plugin</artifactId>
+                        <configuration>
+                            <artifacts>
+                                <artifact>
+                                    <file>${project.build.directory}/${project.build.finalName}-project.tar.gz</file>
+                                    <type>tar.gz</type>
+                                    <classifier>project</classifier>
+                                </artifact>
+                                <artifact>
+                                    <file>${project.build.directory}/${project.build.finalName}-bin.tar.gz</file>
+                                    <type>tar.gz</type>
+                                    <classifier>bin</classifier>
+                                </artifact>
+                                <artifact>
+                                    <file>application/target/su-application-${project.version}.zip</file>
+                                    <type>zip</type>
+                                    <classifier>executable</classifier>
+                                </artifact>
+                            </artifacts>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+    <modules>
+        <module>application</module>
+        <module>branding</module>
+        <module>modules</module>
+    </modules>
+</project>
+

@@ -1,0 +1,3 @@
+CoosPlugin-Context: /org/coos/config
+Bundle-Category: COOS Plugins
+Import-Package:*,org.coos.messaging.plugin.actorframe,org.coos.javaframe.messages

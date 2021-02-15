@@ -1,0 +1,1495 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- ===========================================================================
+// REFCODES.ORG
+// =============================================================================
+// This code is copyright (c) by Siegfried Steiner, Munich, Germany and licensed
+// under the following (see "http://en.wikipedia.org/wiki/Multi-licensing")
+// licenses:
+// =============================================================================
+// GNU General Public License, v3.0 ("http://www.gnu.org/licenses/gpl-3.0.html")
+// together with the GPL linking exception applied; as being applied by the GNU
+// Classpath ("http://www.gnu.org/software/classpath/license.html")
+// =============================================================================
+// Apache License, v2.0 ("http://www.apache.org/licenses/LICENSE-2.0")
+// =============================================================================
+// Please contact the copyright holding author(s) of the software artifacts in
+// question for licensing issues not being covered by the above listed licenses,
+// also regarding commercial licensing models or regarding the compatibility
+// with other open source licenses.
+// ========================================================================= -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<!-- /////////////////////////////////////////////////////////////////// -->
+	<!-- ARTIFACT                                                            -->
+	<!-- /////////////////////////////////////////////////////////////////// -->
+
+	<groupId>org.refcodes</groupId>
+	<artifactId>refcodes-parent</artifactId>
+	<version>2.0.5</version>
+	<name>${project.groupId}:${project.artifactId}</name>
+	<packaging>pom</packaging>
+	
+	<!-- /////////////////////////////////////////////////////////////////// -->
+	<!-- PROPERTIES                                                          -->
+	<!-- /////////////////////////////////////////////////////////////////// -->
+	
+	<properties>
+		<com.amazonaws.sdk.version>1.11.675</com.amazonaws.sdk.version>
+		<com.h2database.version>1.4.197</com.h2database.version>
+		<com.fasterxml.jackson.version>2.9.4</com.fasterxml.jackson.version>
+		<com.mashape.unirest.version>1.4.9</com.mashape.unirest.version>
+		<com.mysql.jdbc.version>5.1.34</com.mysql.jdbc.version>
+		<com.sun.xml.version>2.3.0</com.sun.xml.version>
+		<edu.vt.middleware.vt-crypt.version>2.2</edu.vt.middleware.vt-crypt.version>
+		<java.source.version>9</java.source.version>
+ 		<java.target.version>9</java.target.version>
+		<javax.activation.version>1.1.1</javax.activation.version>
+		<org.apache.maven.archetype.version>3.0.1</org.apache.maven.archetype.version>
+		<org.apache.commons.beanutils.version>1.9.3</org.apache.commons.beanutils.version>
+		<org.apache.commons.codec.version>1.10</org.apache.commons.codec.version>
+		<org.apache.commons.collections.version>4.1</org.apache.commons.collections.version>
+		<org.apache.commons.configuration.version>1.10</org.apache.commons.configuration.version>
+		<org.apache.commons.dbcp.version>1.4</org.apache.commons.dbcp.version>
+		<org.apache.commons.io.version>2.4</org.apache.commons.io.version>
+		<org.apache.commons.lang.version>2.6</org.apache.commons.lang.version>
+		<org.apache.httpcomponents.httpclient.version>4.5.2</org.apache.httpcomponents.httpclient.version>
+		<org.apache.httpcomponents.httpcore.nio.version>4.4.5</org.apache.httpcomponents.httpcore.nio.version>
+		<org.apache.log4j.version>1.2.17</org.apache.log4j.version>
+		<org.apache.maven.plugins.compiler.version>3.8.1</org.apache.maven.plugins.compiler.version>
+		<org.apache.maven.plugins.shade.version>2.4.3</org.apache.maven.plugins.shade.version>
+		<org.apache.maven.plugins.surefire.version>2.22.2</org.apache.maven.plugins.surefire.version>
+		<org.apache.maven.plugins.source.version>3.2.0</org.apache.maven.plugins.source.version>
+		<org.apache.maven.plugins.javadoc.version>3.0.1</org.apache.maven.plugins.javadoc.version>
+		<org.apache.xmlgraphics.batik.transcoder.version>1.8</org.apache.xmlgraphics.batik.transcoder.version>
+		<org.apache.xmlgraphics.commons.version>2.0</org.apache.xmlgraphics.commons.version>
+		<org.bouncycastle.version>1.64</org.bouncycastle.version>
+		<org.codehaus.maven.plugins.build.helper.version>3.0.0</org.codehaus.maven.plugins.build.helper.version>
+		<org.cryptacular.version>1.2.3</org.cryptacular.version>
+		<org.fusesource.jansi.version>1.18</org.fusesource.jansi.version>
+		<com.google.code.gson.version>2.7</com.google.code.gson.version>
+		<org.hibernate.version>5.4.1.Final</org.hibernate.version>
+		<org.hsqldb.version>2.4.1</org.hsqldb.version>
+		<org.jasypt.version>1.9.3</org.jasypt.version>
+		<org.json.version>20180130</org.json.version>
+		<org.jsoup.version>1.12.1</org.jsoup.version>
+		<org.junit.platform.version>1.4.1</org.junit.platform.version>
+		<org.junit.platform.surefire.version>1.3.2</org.junit.platform.surefire.version>
+		<org.junit.jupiter.version>5.5.2</org.junit.jupiter.version>
+		<org.junit.vintage.version>5.5.2</org.junit.vintage.version>
+		<org.moditect.version>1.0.0.Beta2</org.moditect.version>
+		<org.ow2.asm.version>7.2</org.ow2.asm.version>
+		<org.openjfx.version>11</org.openjfx.version>
+		<!-- org.slf4j.version>1.8.0-beta4</org.slf4j.version -->
+		<org.slf4j.version>1.7.28</org.slf4j.version>
+		<org.sonatype.plugins.nexus.staging.version>1.6.8</org.sonatype.plugins.nexus.staging.version>
+		<org.springframework.version>5.1.5.RELEASE</org.springframework.version>
+		<org.springframework.boot.version>2.1.3.RELEASE</org.springframework.boot.version>
+		<org.springframework.cloud.version>2.1.0.RELEASE</org.springframework.cloud.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<!-- /////////////////////////////////////////////////////////////////// -->
+	<!-- META-DATA                                                           -->
+	<!-- /////////////////////////////////////////////////////////////////// -->
+	
+	<url>https://bitbucket.org/refcodes/${project.artifactId}</url>
+	<description>
+		Artifact containing information for all refcodes artifacts such as
+		third party artifacts and their versions being used by refcodes 
+		artifacts as well as the licensing agreements for refcodes artifacts.
+	</description>
+	
+	<!-- /////////////////////////////////////////////////////////////////// -->
+	<!-- LICENSES                                                            -->
+	<!-- /////////////////////////////////////////////////////////////////// -->
+
+	<licenses>
+		<license>
+			<name>GNU General Public License (GPL), Version 3.0</name>
+			<url>http://www.gnu.org/licenses/gpl-3.0.html</url>
+			<distribution>repo</distribution>
+			<comments>See "http://en.wikipedia.org/wiki/Multi-licensing"</comments>
+		</license>
+		<license>
+			<name>Apache License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0</url>
+			<distribution>repo</distribution>
+			<comments>See "http://en.wikipedia.org/wiki/Multi-licensing"</comments>
+		</license>
+		<license>
+			<name>Other License Agreement</name>
+			<url>${org.refcodes.url}</url>
+			<distribution>manual</distribution>
+			<comments>
+				Please contact the copyright holding author(s) of the software 
+				artifacts in question for licensing issues not being covered by 
+				the above listed licenses, also regarding commercial licensing 
+				models or regarding the compatibility with other open source 
+				licenses.
+			</comments>
+		</license>
+	</licenses>
+
+	<!-- /////////////////////////////////////////////////////////////////// -->
+	<!-- DEVELOPERS                                                          -->
+	<!-- /////////////////////////////////////////////////////////////////// -->
+
+	<developers>
+		<developer>
+			<name>Siegfried Steiner</name>
+			<email>steiner@refcodes.org</email>
+			<url>http://www.refcodes.org</url>
+		</developer>
+	</developers>
+
+	<!-- /////////////////////////////////////////////////////////////////// -->
+	<!-- SCM                                                                 -->
+	<!-- /////////////////////////////////////////////////////////////////// -->
+
+	<scm>
+		<connection>scm:git:git@bitbucket.org:refcodes/${project.artifactId}.git</connection>
+		<developerConnection>scm:git:git@bitbucket.org:refcodes/${project.artifactId}.git</developerConnection>
+		<url>https://bitbucket.org/refcodes/${project.artifactId}</url>
+  	</scm>
+
+	<!-- /////////////////////////////////////////////////////////////////// -->
+	<!-- DISTRIBUTION MANAGEMENT                                             -->
+	<!-- /////////////////////////////////////////////////////////////////// -->
+
+	<!--
+		<distributionManagement>
+			<snapshotRepository>
+				<id>refcodes-snapshots</id>
+				<name>REFCODES.ORG Snapshots</name>
+				<url>git:snapshots://git@bitbucket.org:refcodes/refcodes-maven-repository.git</url>
+			</snapshotRepository>
+			<repository>
+				<id>refcodes-releases</id>
+				<name>REFCODES.ORG Releases</name>
+				<url>git:releases://git@bitbucket.org:refcodes/refcodes-maven-repository.git</url>
+			</repository>
+			<site>
+				<id>refcodes-site</id>
+				<name>REFCODES.ORG Site</name>
+				<url>git:site://git@bitbucket.org:refcodes/refcodes-maven-repository.git</url>
+			</site>
+		</distributionManagement>
+	-->
+
+	<distributionManagement>
+		<snapshotRepository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+		</snapshotRepository>
+		<repository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+		</repository>
+	</distributionManagement>
+
+	<!-- /////////////////////////////////////////////////////////////////// -->
+	<!-- REPOSITORIES                                                        -->
+	<!-- /////////////////////////////////////////////////////////////////// -->
+
+	<repositories>
+		<repository>
+			<id>central</id>
+			<name>Central Repository</name>
+			<url>http://repo1.maven.org/maven2</url>
+			<layout>default</layout>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>apache</id>
+			<name>Apache Repository</name>
+			<url>https://repo.maven.apache.org/maven2</url>
+			<layout>default</layout>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>sonatype-nexus-snapshots</id>
+			<name>Sonatype Nexus Snapshots</name>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>sonatype-nexus-releases</id>
+			<name>Sonatype Nexus Releases</name>
+			<url>https://oss.sonatype.org/content/repositories/releases</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<!--
+			<repository>
+				<id>refcodes-snapshots</id>
+				<name>REFCODES.ORG Snapshots</name>
+				<releases>
+					<enabled>false</enabled>
+				</releases>
+				<snapshots>
+					<enabled>true</enabled>
+				</snapshots>
+				<url>https://api.bitbucket.org/1.0/repositories/refcodes/refcodes-maven-repository/raw/snapshots</url>
+			</repository>
+			<repository>
+				<id>refcodes-releases</id>
+				<name>REFCODES.ORG Releases</name>
+				<releases>
+					<enabled>true</enabled>
+				</releases>
+				<snapshots>
+					<enabled>false</enabled>
+				</snapshots>
+				<url>https://api.bitbucket.org/1.0/repositories/refcodes/refcodes-maven-repository/raw/releases</url>
+			</repository>
+		 -->
+	</repositories>
+	
+	<!-- /////////////////////////////////////////////////////////////////// -->
+	<!-- DEPENDENCIES                                                        -->
+	<!-- /////////////////////////////////////////////////////////////////// -->
+
+	<dependencies>
+		<dependency>
+			<groupId>org.refcodes</groupId>
+			<artifactId>refcodes-licensing</artifactId>
+		</dependency>
+		<dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <scope>test</scope>
+        </dependency>
+	</dependencies>
+
+	<!-- /////////////////////////////////////////////////////////////////// -->
+	<!-- BUILD                                                               -->
+	<!-- /////////////////////////////////////////////////////////////////// -->
+
+	<build>
+
+		<!-- /////////////////////////////////////////////////////////////// -->
+		<!-- PLUGINS                                                         -->
+		<!-- /////////////////////////////////////////////////////////////// -->
+
+		<plugins>
+			<plugin>
+				<groupId>org.sonatype.plugins</groupId>
+				<artifactId>nexus-staging-maven-plugin</artifactId>
+				<extensions>true</extensions>
+				<configuration>
+					<serverId>ossrh</serverId>
+					<nexusUrl>https://oss.sonatype.org/</nexusUrl>
+					<autoReleaseAfterClose>true</autoReleaseAfterClose>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<configuration>
+					<preparationGoals>clean install</preparationGoals>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>module-name</id>
+						<goals>
+							<goal>regex-property</goal>
+						</goals>
+						<configuration>
+							<name>module.name</name>
+							<value>${project.artifactId}</value>
+							<regex>-</regex>
+							<replacement>.</replacement>
+							<failIfNoMatch>false</failIfNoMatch>
+						</configuration>
+					</execution>
+					<execution>
+						<id>module-domain</id>
+						<goals>
+							<goal>regex-property</goal>
+						</goals>
+						<configuration>
+							<name>module.domain</name>
+							<value>${project.groupId}</value>
+							<regex>(.*)\.(.*)</regex>
+							<replacement>$1</replacement>
+							<failIfNoMatch>false</failIfNoMatch>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<!--
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>cobertura-maven-plugin</artifactId>
+					<executions>
+						<execution>
+							<id>clean</id>
+							<phase>clean</phase>
+							<goals>
+								<goal>clean</goal>
+							</goals>
+						</execution>
+						<execution>
+							<phase>install</phase>
+							<goals>
+								<goal>cobertura</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+			-->
+
+		</plugins>
+		
+		<!-- /////////////////////////////////////////////////////////////// -->
+		<!-- EXTENSIONS                                                      -->
+		<!-- /////////////////////////////////////////////////////////////// -->
+
+		<!--
+			<extensions>
+				<extension>
+					<groupId>ar.com.synergian</groupId>
+					<artifactId>wagon-git</artifactId>
+					<version>${wagongit.version}</version>
+				</extension>
+			</extensions>
+		-->
+
+		<!-- /////////////////////////////////////////////////////////////// -->
+		<!-- PLUGIN MANAGEMENT                                               -->
+		<!-- /////////////////////////////////////////////////////////////// -->
+
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>build-helper-maven-plugin</artifactId>
+					<version>${org.codehaus.maven.plugins.build.helper.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.moditect</groupId>
+					<artifactId>moditect-maven-plugin</artifactId>
+					<version>${org.moditect.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<version>${org.apache.maven.plugins.javadoc.version}</version>
+					<configuration>
+						<additionalOptions>-html5</additionalOptions>
+						<!--
+							<detectLinks>true</detectLinks>
+						-->
+						<additionalparam>--source 8</additionalparam>
+					</configuration>
+						<!--
+							<executions>
+								<execution>
+									<id>aggregate</id>
+									<goals>
+										<goal>aggregate</goal>
+									</goals>
+									<phase>site</phase>
+									<configuration>
+										<detectLinks>true</detectLinks> 
+									</configuration>
+								</execution>
+							</executions>
+						<-->
+					</plugin>
+				<plugin>
+					<groupId>org.sonatype.plugins</groupId>
+					<artifactId>nexus-staging-maven-plugin</artifactId>
+					<version>${org.sonatype.plugins.nexus.staging.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-shade-plugin</artifactId>
+					<version>${org.apache.maven.plugins.shade.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-source-plugin</artifactId>
+					<version>${org.apache.maven.plugins.source.version}</version>
+					<executions>
+						<execution>
+							<id>bundle-sources</id>
+							<phase>package</phase>
+							<goals>
+								<goal>jar-no-fork</goal>
+								<goal>test-jar-no-fork</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>${org.apache.maven.plugins.surefire.version}</version>
+					<!--
+						<configuration>
+							<argLine>-XX:-UseSplitVerifier</argLine>
+						</configuration>
+					-->
+				</plugin>
+				<plugin>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>${org.apache.maven.plugins.compiler.version}</version>
+					<configuration>
+						<fork>true</fork>
+						<source>${java.source.version}</source>
+						<target>${java.target.version}</target>
+						<testSource>${java.source.version}</testSource>
+                    	<testTarget>${java.target.version}</testTarget>
+                    	<encoding>UTF-8</encoding>
+					</configuration>
+					<dependencies>
+						<!-- //////////////////////////////////////////// -->
+						<!-- To make MAVEN compile Java 10 code and above -->
+						<!-- //////////////////////////////////////////// -->
+						<dependency>
+							<groupId>org.ow2.asm</groupId>
+							<artifactId>asm</artifactId>
+							<version>${org.ow2.asm.version}</version>
+						</dependency>
+						<!-- //////////////////////////////////////////// -->
+					</dependencies>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jar-plugin</artifactId>
+					<configuration>
+						<archive>
+							<addMavenDescriptor>false</addMavenDescriptor>
+							<manifest>
+								<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+								<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+							</manifest>
+							<manifestEntries>
+        						<Automatic-Module-Name>${module.domain}.${module.name}</Automatic-Module-Name>
+      						</manifestEntries>
+						</archive>
+					</configuration>
+					<executions>
+						<execution>
+							<goals>
+								<goal>test-jar</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+	<!-- /////////////////////////////////////////////////////////////////// -->
+	<!-- REPORTING                                                           -->
+	<!-- /////////////////////////////////////////////////////////////////// -->
+
+	<reporting>
+
+		<!-- /////////////////////////////////////////////////////////////// -->
+		<!-- PLUGINS                                                         -->
+		<!-- /////////////////////////////////////////////////////////////// -->
+
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<configuration>
+					<detectOfflineLinks>false</detectOfflineLinks>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-pmd-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jxr-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>cobertura-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>versions-maven-plugin</artifactId>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>dependency-updates-report</report>
+							<report>property-updates-report</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
+		</plugins>
+	</reporting>
+
+	<!-- /////////////////////////////////////////////////////////////////// -->
+	<!-- PLUGIN REPOSITORIES                                                 -->
+	<!-- /////////////////////////////////////////////////////////////////// -->
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>central</id>
+			<name>Central Repository</name>
+			<url>http://repo1.maven.org/maven2</url>
+		</pluginRepository>
+		<pluginRepository>
+			<id>apache</id>
+			<name>Apacheh Repository</name>
+			<url>https://repo.maven.apache.org/maven2</url>
+			<layout>default</layout>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<releases>
+				<updatePolicy>never</updatePolicy>
+			</releases>
+		</pluginRepository>
+	</pluginRepositories>
+
+	<!-- /////////////////////////////////////////////////////////////////// -->
+	<!-- DEPENDENCY MANAGEMENT                                               -->
+	<!-- /////////////////////////////////////////////////////////////////// -->
+
+	<dependencyManagement>
+
+		<!-- /////////////////////////////////////////////////////////////// -->
+		<!-- DEPENDENCIES                                                    -->
+		<!-- /////////////////////////////////////////////////////////////// -->
+
+		<dependencies>
+			<dependency>
+				<groupId>org.openjfx</groupId>
+				<artifactId>javafx-graphics</artifactId>
+				<version>${org.openjfx.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.openjfx</groupId>
+				<artifactId>javafx-fxml</artifactId>
+				<version>${org.openjfx.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-databind</artifactId>
+				<exclusions>
+					<!-- Exclude jackson-annotations, wrong version! -->
+			        <exclusion>
+			            <groupId>com.fasterxml.jackson.core</groupId>
+			            <artifactId>jackson-annotations</artifactId>
+			        </exclusion>
+			    </exclusions>
+				<version>${com.fasterxml.jackson.version}</version>
+			</dependency>
+			<!-- Include jackson-annotations, correct version! -->
+			<dependency>
+			    <groupId>com.fasterxml.jackson.core</groupId>
+			    <artifactId>jackson-annotations</artifactId>
+			    <version>${com.fasterxml.jackson.version}</version>
+			</dependency>
+			<!-- As of Java 9 -->
+			<dependency>
+				<groupId>javax.xml.bind</groupId>
+				<artifactId>jaxb-api</artifactId>
+				<version>${com.sun.xml.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.sun.xml.bind</groupId>
+				<artifactId>jaxb-core</artifactId>
+				<version>${com.sun.xml.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.sun.xml.bind</groupId>
+				<artifactId>jaxb-impl</artifactId>
+				<version>${com.sun.xml.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>javax.activation</groupId>
+				<artifactId>activation</artifactId>
+				<version>${javax.activation.version}</version>
+			</dependency>
+			<!-- As of Java 9 -->
+			
+			<dependency>
+				<groupId>com.fasterxml.jackson.dataformat</groupId>
+				<artifactId>jackson-dataformat-xml</artifactId>
+				<version>${com.fasterxml.jackson.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.fasterxml.jackson.dataformat</groupId>
+				<artifactId>jackson-dataformat-yaml</artifactId>
+				<version>${com.fasterxml.jackson.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-dbcp</groupId>
+				<artifactId>commons-dbcp</artifactId>
+				<version>${org.apache.commons.dbcp.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.hsqldb</groupId>
+				<artifactId>hsqldb</artifactId>
+				<version>${org.hsqldb.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.google.code.gson</groupId>
+				<artifactId>gson</artifactId>
+				<version>${com.google.code.gson.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.httpcomponents</groupId>
+				<artifactId>httpcore-nio</artifactId>
+				<version>${org.apache.httpcomponents.httpcore.nio.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.mashape.unirest</groupId>
+				<artifactId>unirest-java</artifactId>
+				<version>${com.mashape.unirest.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.xmlgraphics</groupId>
+				<artifactId>xmlgraphics-commons</artifactId>
+				<version>${org.apache.xmlgraphics.commons.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.xmlgraphics</groupId>
+				<artifactId>batik-transcoder</artifactId>
+				<version>${org.apache.xmlgraphics.batik.transcoder.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.amazonaws</groupId>
+				<artifactId>aws-java-sdk</artifactId>
+				<version>${com.amazonaws.sdk.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.amazonaws</groupId>
+				<artifactId>aws-java-sdk-core</artifactId>
+				<version>${com.amazonaws.sdk.version}</version>
+			</dependency>
+			<dependency>
+			    <groupId>com.amazonaws</groupId>
+			    <artifactId>aws-java-sdk-s3</artifactId>
+			    <version>${com.amazonaws.sdk.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>log4j</groupId>
+				<artifactId>log4j</artifactId>
+				<version>${org.apache.log4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>log4j</groupId>
+				<artifactId>apache-log4j-extras</artifactId>
+				<version>${org.apache.log4j.version}</version>
+			</dependency>
+			<dependency>
+			<groupId>org.bouncycastle</groupId>
+				<artifactId>bcpkix-jdk15on</artifactId>
+				<version>${org.bouncycastle.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.jsoup</groupId>
+				<artifactId>jsoup</artifactId>
+				<version>${org.jsoup.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.junit.jupiter</groupId>
+				<artifactId>junit-jupiter</artifactId>
+				<version>${org.junit.jupiter.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.junit.vintage</groupId>
+				<artifactId>junit-vintage-engine</artifactId>
+				<version>${org.junit.vintage.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-core</artifactId>
+				<version>${org.hibernate.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-entitymanager</artifactId>
+				<version>${org.hibernate.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>${com.mysql.jdbc.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>jcl-over-slf4j</artifactId>
+				<version>${org.slf4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-nop</artifactId>
+				<version>${org.slf4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>${org.slf4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>jul-to-slf4j</artifactId>
+				<version>${org.slf4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-jdk14</artifactId>
+				<version>${org.slf4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.h2database</groupId>
+				<artifactId>h2</artifactId>
+				<version>${com.h2database.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-c3p0</artifactId>
+				<version>${org.hibernate.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-beans</artifactId>
+				<version>${org.springframework.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-orm</artifactId>
+				<version>${org.springframework.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-core</artifactId>
+				<version>${org.springframework.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-web</artifactId>
+				<version>${org.springframework.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-webmvc</artifactId>
+				<version>${org.springframework.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context</artifactId>
+				<version>${org.springframework.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-test</artifactId>
+				<version>${org.springframework.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-tx</artifactId>
+				<version>${org.springframework.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-aop</artifactId>
+				<version>${org.springframework.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-beanutils</groupId>
+				<artifactId>commons-beanutils</artifactId>
+				<version>${org.apache.commons.beanutils.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-configuration</groupId>
+				<artifactId>commons-configuration</artifactId>
+				<version>${org.apache.commons.configuration.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-collections4</artifactId>
+				<version>${org.apache.commons.collections.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.httpcomponents</groupId>
+				<artifactId>httpclient</artifactId>
+				<version>${org.apache.httpcomponents.httpclient.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-lang</groupId>
+				<artifactId>commons-lang</artifactId>
+				<version>${org.apache.commons.lang.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-io</groupId>
+				<artifactId>commons-io</artifactId>
+				<version>${org.apache.commons.io.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-codec</groupId>
+				<artifactId>commons-codec</artifactId>
+				<version>${org.apache.commons.codec.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.cryptacular</groupId>
+				<artifactId>cryptacular</artifactId>
+				<version>${org.cryptacular.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.bouncycastle</groupId>
+  						<artifactId>bcprov-jdk15on</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>edu.vt.middleware</groupId>
+				<artifactId>vt-crypt</artifactId>
+				<version>${edu.vt.middleware.vt-crypt.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.bouncycastle</groupId>
+						<artifactId>bcprov-jdk15</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.slf4j</groupId>
+						<artifactId>slf4j-api</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.slf4j</groupId>
+						<artifactId>slf4j-simple</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>org.jasypt</groupId>
+				<artifactId>jasypt</artifactId>
+				<version>${org.jasypt.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.json</groupId>
+				<artifactId>json</artifactId>
+				<version>${org.json.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.fusesource.jansi</groupId>
+				<artifactId>jansi</artifactId>
+				<version>${org.fusesource.jansi.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter</artifactId>
+				<version>${org.springframework.boot.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-data-rest</artifactId>
+				<version>${org.springframework.boot.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-data-jpa</artifactId>
+				<version>${org.springframework.boot.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-web</artifactId>
+				<version>${org.springframework.boot.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+				<version>${org.springframework.cloud.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+				<version>${org.springframework.cloud.version}</version>
+			</dependency>
+
+			<!-- /////////////////////////////////////////////////////////// -->
+			<!-- REFCODES                                                    -->
+			<!-- /////////////////////////////////////////////////////////// -->
+
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-audio</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-interceptor</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-batch</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-boulderdash</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-checkerboard</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-checkerboard-alt</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-checkerboard-alt-javafx</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-checkerboard-ext-javafx</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-checkerboard-ext-javafx-boulderdash</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-checkerboard-ext-javafx-chess</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-codec</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-command</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-component</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-component-ext</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-component-ext-observer</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-configuration</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-configuration-ext</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-configuration-ext-console</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-configuration-ext-obfuscation</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-configuration-ext-observer</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-configuration-ext-runtime</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-console</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-console-ext</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-console-ext-archetype</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-controlflow</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-criteria</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-data</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-data-ext</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-data-ext-boulderdash</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-data-ext-chess</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-data-ext-checkers</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-data-ext-corporate</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-data-ext-symbols</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-daemon</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-entity</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-eventbus</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-eventbus-ext</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-eventbus-ext-applications</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-exception</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-factory</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-factory-alt</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-factory-alt-spring</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-filesystem</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-filesystem-alt</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-filesystem-alt-s3</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-forwardsecrecy</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-forwardsecrecy-alt</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-forwardsecrecy-alt-filesystem</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-generator</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-graphical</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-graphical-ext</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-graphical-ext-javafx</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-io</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-io-ext</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-io-ext-observable</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-jobbus</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-licensing</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-logger</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-logger-alt</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-logger-alt-async</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-logger-alt-console</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-logger-alt-io</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-logger-alt-slf4j</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-logger-alt-spring</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-logger-ext</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-logger-ext-slf4j</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-matcher</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-microservice</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-mixin</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-net</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-numerical</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-observer</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-p2p</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-remoting</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-remoting-ext</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-remoting-ext-observer</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-rest</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-rest-ext</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-rest-ext-archetype</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-rest-ext-eureka</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-runtime</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-security</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-security-alt</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-security-alt-chaos</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-security-ext</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-security-ext-chaos</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-security-ext-spring</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-serviceboard</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-serviceboard-alt</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-serviceboard-alt-rdbms</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-servicebus</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-servicebus-alt</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-servicebus-alt-spring</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-structure</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-structure-ext</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-structure-ext-factory</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-tabular</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-tabular-alt</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-tabular-alt-forwardsecrecy</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-textual</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.refcodes</groupId>
+				<artifactId>refcodes-time</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	
+	<!-- /////////////////////////////////////////////////////////////////// -->
+	<!-- PROFILES                                                            -->
+	<!-- /////////////////////////////////////////////////////////////////// -->
+
+	<profiles>
+		<profile> 
+			<id>release</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-source-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>attach-sources</id>
+								<goals>
+									<goal>jar-no-fork</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-javadoc-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>attach-javadocs</id>
+								<goals>
+									<goal>jar</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-gpg-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>sign-artifacts</id>
+								<phase>verify</phase>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+</project>

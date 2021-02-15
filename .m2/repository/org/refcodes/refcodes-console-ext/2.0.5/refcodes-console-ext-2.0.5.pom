@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ===========================================================================
+// REFCODES.ORG
+// =============================================================================
+// This code is copyright (c) by Siegfried Steiner, Munich, Germany and licensed
+// under the following (see "http://en.wikipedia.org/wiki/Multi-licensing")
+// licenses:
+// =============================================================================
+// GNU General Public License, v3.0 ("http://www.gnu.org/licenses/gpl-3.0.html")
+// together with the GPL linking exception applied; as being applied by the GNU
+// Classpath ("http://www.gnu.org/software/classpath/license.html")
+// =============================================================================
+// Apache License, v2.0 ("http://www.apache.org/licenses/LICENSE-2.0")
+// =============================================================================
+// Please contact the copyright holding author(s) of the software artifacts in
+// question for licensing issues not being covered by the above listed licenses,
+// also regarding commercial licensing models or regarding the compatibility
+// with other open source licenses.
+// ========================================================================= --><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<!-- /////////////////////////////////////////////////////////////////// -->
+	<!-- ARTIFACT                                                            -->
+	<!-- /////////////////////////////////////////////////////////////////// -->
+
+	<parent>
+		<groupId>org.refcodes</groupId>
+		<artifactId>refcodes-parent</artifactId>
+		<version>2.0.5</version>
+	</parent>
+
+	<artifactId>refcodes-console-ext</artifactId>
+	<name>${project.groupId}:${project.artifactId}</name>
+	<packaging>pom</packaging>
+
+	<!-- /////////////////////////////////////////////////////////////////// -->
+	<!-- META-DATA                                                           -->
+	<!-- /////////////////////////////////////////////////////////////////// -->
+	
+	<url>https://bitbucket.org/refcodes/${project.artifactId}</url>
+	<description>
+		Artifact for extended implementations and additional types for the 
+		refcodes-console artifact.
+	</description>
+
+	<!-- /////////////////////////////////////////////////////////////////// -->
+	<!-- DEVELOPERS                                                          -->
+	<!-- /////////////////////////////////////////////////////////////////// -->
+
+	<developers>
+		<developer>
+			<name>Siegfried Steiner</name>
+			<email>steiner@refcodes.org</email>
+			<url>http://www.refcodes.org</url>
+		</developer>
+	</developers>
+
+	<!-- /////////////////////////////////////////////////////////////////// -->
+	<!-- SCM                                                                 -->
+	<!-- /////////////////////////////////////////////////////////////////// -->
+
+	<scm>
+		<connection>scm:git:git@bitbucket.org:refcodes/${project.artifactId}.git</connection>
+		<developerConnection>scm:git:git@bitbucket.org:refcodes/${project.artifactId}.git</developerConnection>
+		<url>https://bitbucket.org/refcodes/${project.artifactId}</url>
+  	</scm>
+
+	<!-- /////////////////////////////////////////////////////////////////// -->
+	<!-- DEPENDENCIES                                                        -->
+	<!-- /////////////////////////////////////////////////////////////////// -->
+
+	<!-- /////////////////////////////////////////////////////////////////// -->
+	<!-- BUILD                                                               -->
+	<!-- /////////////////////////////////////////////////////////////////// -->
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<includes>
+						<include>**/*Test.java</include>
+					</includes>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<!-- /////////////////////////////////////////////////////////////////// -->
+	<!-- MODULES                                                             -->
+	<!-- /////////////////////////////////////////////////////////////////// -->
+
+	<modules>
+		<module>refcodes-console-ext-archetype</module>
+	</modules>
+
+</project>

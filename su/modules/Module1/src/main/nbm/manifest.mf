@@ -1,0 +1,2 @@
+Manifest-Version: 1.0
+OpenIDE-Module-Localizing-Bundle: su/module1/Bundle.properties

@@ -1,0 +1,270 @@
+<!-- 
+	/*
+	Drools5 Integration Helper
+	Copyright (C) 2009  Mathieu Boretti mathieu.boretti@gmail.com
+	
+	This program is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
+	
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+	
+	You should have received a copy of the GNU General Public License
+	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+	
+	*/
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<parent>
+		<artifactId>drools5-integration-helper-main</artifactId>
+		<groupId>org.boretti.drools.integration</groupId>
+		<version>1.3.0</version>
+	</parent>
+	<packaging>maven-archetype</packaging>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.boretti.drools.integration</groupId>
+	<artifactId>drools5-integration-helper-archetype</artifactId>
+	<name>Drools 5 Integration helper Archetype</name>
+	<version>1.3.0</version>
+	<description>
+		This is an Maven 2 Archetype to support creation of a ready to
+		use Maven 2 project with Drools support. This archetype contains
+		examples of code based on interface, classes and pre/post
+		condition. JUnit 4 examples are also included.
+	</description>
+	<url>http://www.javaforge.com/proj/doc.do?proj_id=2903</url>
+	<licenses>
+		<license>
+			<name>GPL3</name>
+			<url>http://www.gnu.org/licenses/gpl-3.0.txt</url>
+		</license>
+	</licenses>
+
+	<scm>
+		<url>
+			http://www.javaforge.com/proj/sources/sccBrowse.do?proj_id=2903
+		</url>
+		<connection>
+			scm:svn:http://svn.javaforge.com/svn/droolsintegrationhelper
+		</connection>
+		<developerConnection>
+			scm:svn:http://svn.javaforge.com/svn/droolsintegrationhelper
+		</developerConnection>
+	</scm>
+
+	<developers>
+		<developer>
+			<id>mbo</id>
+			<name>Mathieu Boretti</name>
+			<email>Mathieu.Boretti@gmail.com</email>
+			<roles>
+				<role>architect</role>
+				<role>developer</role>
+			</roles>
+		</developer>
+	</developers>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.boretti.drools.integration</groupId>
+			<artifactId>drools5-integration-helper-library</artifactId>
+			<version>1.3.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.boretti.drools.integration</groupId>
+			<artifactId>
+				drools5-integration-helper-maven-plugin
+			</artifactId>
+			<version>1.3.0</version>
+		</dependency>
+	</dependencies>
+	<build>
+		<extensions>
+			<extension>
+				<groupId>org.apache.maven.archetype</groupId>
+				<artifactId>archetype-packaging</artifactId>
+				<version>2.0-alpha-4</version>
+			</extension>
+		</extensions>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>make-source</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-javadocs</id>
+						<phase>package</phase>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-archetype-plugin</artifactId>
+				<version>2.0-alpha-4</version>
+				<extensions>true</extensions>
+			</plugin>
+
+		</plugins>
+	</build>
+
+	<profiles>
+		<profile>
+			<id>full-test</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-invoker-plugin</artifactId>
+						<configuration>
+							<debug>false</debug>
+							<showErrors>true</showErrors>
+							<projectsDirectory>
+								src/it
+							</projectsDirectory>
+							<cloneProjectsTo>
+								${project.build.directory}/it
+							</cloneProjectsTo>
+						</configuration>
+						<executions>
+							<execution>
+								<id>prepare</id>
+								<phase>pre-integration-test</phase>
+								<goals>
+									<goal>install</goal>
+								</goals>
+								<configuration>
+									<localRepositoryPath>
+										${project.build.directory}/it-cache
+									</localRepositoryPath>
+								</configuration>
+							</execution>
+							<execution>
+								<id>run</id>
+								<phase>integration-test</phase>
+								<goals>
+									<goal>run</goal>
+								</goals>
+								<configuration>
+									<streamLogs>false</streamLogs>
+									<localRepositoryPath>
+										${project.build.directory}/it-cache
+									</localRepositoryPath>
+									<pomIncludes>
+										<pomInclude>
+											test*/pom.xml
+										</pomInclude>
+									</pomIncludes>
+									<postBuildHookScript>
+										verify.bsh
+									</postBuildHookScript>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<artifactId>maven-resources-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>prepare-cache</id>
+								<goals>
+									<goal>copy-resources</goal>
+								</goals>
+								<phase>pre-integration-test</phase>
+								<configuration>
+									<outputDirectory>
+										${project.build.directory}/it-cache
+									</outputDirectory>
+									<resources>
+										<resource>
+											<directory>
+												${settings.localRepository}
+											</directory>
+											<includes>
+												<include>
+													org/apache/maven/*
+												</include>
+												<include>
+													org/apache/maven/**/*
+												</include>
+												<include>
+													org/codehaus/plexus/*
+												</include>
+												<include>
+													org/codehaus/plexus/**/*
+												</include>
+												<include>
+													org/drools/*
+												</include>
+												<include>
+													org/drools/**/*
+												</include>
+												<include>
+													junit/*
+												</include>
+												<include>
+													junit/**/*
+												</include>
+												<include>
+													plexus/*
+												</include>
+												<include>
+													plexus/**/*
+												</include>
+												<include>
+													org/sonatype/*
+												</include>
+												<include>
+													org/sonatype/**/*
+												</include>
+												<include>
+													log4j/*
+												</include>
+												<include>
+													log4j/**/*
+												</include>
+												<include>asm/*</include>
+												<include>
+													asm/**/*
+												</include>
+												<include>
+													commons-*/*
+												</include>
+												<include>
+													commons-*/**/*
+												</include>
+											</includes>
+											<filtering>false</filtering>
+										</resource>
+									</resources>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
+</project>

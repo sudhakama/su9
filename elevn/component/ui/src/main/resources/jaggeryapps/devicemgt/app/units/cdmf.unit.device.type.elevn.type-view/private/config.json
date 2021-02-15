@@ -1,0 +1,8 @@
+
+{
+  "deviceType": {
+    "label": "elevn",
+    "category": "virtual",
+    "downloadAgentUri": "elevn/device/download"
+  }
+}

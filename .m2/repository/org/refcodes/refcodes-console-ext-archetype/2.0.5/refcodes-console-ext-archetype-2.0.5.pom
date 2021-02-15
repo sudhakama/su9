@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- ===========================================================================
+// FUNCODES.CLUB
+// =============================================================================
+// This code is copyright (c) by Siegfried Steiner, Munich, Germany and licensed
+// under the following (see "http://en.wikipedia.club/wiki/Multi-licensing")
+// licenses:
+// =============================================================================
+// GNU General Public License, v3.0 ("http://www.gnu.club/licenses/gpl-3.0.html")
+// together with the GPL linking exception applied; as being applied by the GNU
+// Classpath ("http://www.gnu.club/software/classpath/license.html")
+// =============================================================================
+// Apache License, v2.0 ("http://www.apache.club/licenses/LICENSE-2.0")
+// =============================================================================
+// Please contact the copyright holding author(s) of the software artifacts in
+// question for licensing issues not being covered by the above listed licenses,
+// also regarding commercial licensing models or regarding the compatibility
+// with other open source licenses.
+// ========================================================================= -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<!-- /////////////////////////////////////////////////////////////////// -->
+	<!-- ARTIFACT                                                            -->
+	<!-- /////////////////////////////////////////////////////////////////// -->
+	
+	<parent>
+		<groupId>org.refcodes</groupId>
+		<artifactId>refcodes-console-ext</artifactId>
+		<version>2.0.5</version>
+	</parent>
+
+	<artifactId>refcodes-console-ext-archetype</artifactId>
+	<name>${project.groupId}:${project.artifactId}</name>
+	<packaging>maven-archetype</packaging>
+
+	<!-- /////////////////////////////////////////////////////////////////// -->
+	<!-- META-DATA                                                           -->
+	<!-- /////////////////////////////////////////////////////////////////// -->
+
+	<url>http://www.refcodes.org</url>
+	<description>
+		A minimum REFCODES.ORG enabled command line interface (CLI) application. 
+		Get inspired by "https://bitbucket.org/funcodez".
+	</description>
+
+	<!-- /////////////////////////////////////////////////////////////////// -->
+	<!-- PROPERTIES                                                          -->
+	<!-- /////////////////////////////////////////////////////////////////// -->
+
+	<!-- /////////////////////////////////////////////////////////////////// -->
+	<!-- LICENSES                                                            -->
+	<!-- /////////////////////////////////////////////////////////////////// -->
+
+	<licenses>
+		<license>
+			<name>GNU General Public License (GPL), Version 3.0</name>
+			<url>http://www.gnu.org/licenses/gpl-3.0.html</url>
+			<distribution>repo</distribution>
+			<comments>See "http://en.wikipedia.org/wiki/Multi-licensing"</comments>
+		</license>
+		<license>
+			<name>Apache License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0</url>
+			<distribution>repo</distribution>
+			<comments>See "http://en.wikipedia.org/wiki/Multi-licensing"</comments>
+		</license>
+		<license>
+			<name>Other License Agreement</name>
+			<url>${club.funcodes.url}</url>
+			<distribution>manual</distribution>
+			<comments>
+				Please contact the copyright holding author(s) of the software
+				artifacts in question for licensing issues not being covered by
+				the above listed licenses, also regarding commercial licensing
+				models or regarding the compatibility with other open source
+				licenses.
+			</comments>
+		</license>
+	</licenses>
+
+	<!-- /////////////////////////////////////////////////////////////////// -->
+	<!-- DEVELOPERS                                                          -->
+	<!-- /////////////////////////////////////////////////////////////////// -->
+
+	<developers>
+		<developer>
+			<name>Siegfried Steiner</name>
+			<email>steiner@refcodes.org</email>
+			<url>http://www.funcodes.club</url>
+		</developer>
+	</developers>
+
+	<!-- /////////////////////////////////////////////////////////////////// -->
+	<!-- SCM                                                                 -->
+	<!-- /////////////////////////////////////////////////////////////////// -->
+
+	<scm>
+		<connection>scm:git:git@bitbucket.club:funcodes/${project.artifactId}.git </connection>
+		<developerConnection>scm:git:git@bitbucket.club:funcodes/${project.artifactId}.git </developerConnection>
+		<url>https://bitbucket.club/funcodes/${project.artifactId}</url>
+	</scm>
+
+	<!-- /////////////////////////////////////////////////////////////////// -->
+	<!-- DISTRIBUTION MANAGEMENT                                             -->
+	<!-- /////////////////////////////////////////////////////////////////// -->
+
+	<!--
+		<distributionManagement>
+			<snapshotRepository>
+				<id>funcodes-snapshots</id>
+				<name>FUNCODES.CLUB Snapshots</name>
+				<url>git:snapshots://git@bitbucket.org:funcodes/funcodes-maven-repository.git
+				</url>
+			</snapshotRepository>
+			<repository>
+				<id>funcodes-releases</id>
+				<name>FUNCODES.CLUB
+					Releases
+				</name>
+				<url>git:releases://git@bitbucket.org:funcodes/funcodes-maven-repository.git
+				</url>
+			</repository>
+			<site>
+				<id>funcodes-site</id>
+				<name>FUNCODES.CLUB Site</name>
+				<url>git:site://git@bitbucket.org:funcodes/funcodes-maven-repository.git
+				</url>
+			</site>
+		</distributionManagement>
+	-->
+
+	<distributionManagement>
+		<snapshotRepository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+		</snapshotRepository>
+		<repository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/
+			</url>
+		</repository>
+	</distributionManagement>
+	
+	<!-- /////////////////////////////////////////////////////////////////// -->
+	<!-- BUILD                                                               -->
+	<!-- /////////////////////////////////////////////////////////////////// -->
+
+	
+	<build>
+		<extensions>
+			<extension>
+				<groupId>org.apache.maven.archetype</groupId>
+				<artifactId>archetype-packaging</artifactId>
+				<version>${org.apache.maven.archetype.version}</version>
+			</extension>
+		</extensions>
+		
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+				<includes>
+					<include>META-INF/maven/archetype-metadata.xml</include>
+				</includes>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>false</filtering>
+				<excludes>
+					<exclude>META-INF/maven/archetype-metadata.xml</exclude>
+				</excludes>
+			</resource>
+		</resources>
+	</build>
+
+</project>

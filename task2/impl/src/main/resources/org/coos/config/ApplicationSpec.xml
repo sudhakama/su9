@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <!--<!DOCTYPE actor SYSTEM "actor.dtd">-->
+<application name="Osgi gateway">
+  <!-- Specify the application description, the actor domains   -->
+  <description>task2 project</description>
+
+  <trace trace="true" logfile="logfile.log" />
+
+
+  <domain name="task2Domain" actor="ActorDomain">
+
+    <scheduler name="mainSched" threads="1">
+      <actor type="ActorDomain" />
+    </scheduler>
+  </domain>
+
+
+  <actor name="task2" class="task2.impl.task2SM" />
+
+
+  <!-- Specify the actor domain of which task2 is part -->
+  <actor name="ActorDomain" class="org.coos.actorframe.ActorDomainSM">
+    <description>Domain for server</description>
+    <part actor="task2" instance="task2Actor"
+      visible="true" trace="debug" min="1" max="1" />
+  </actor>
+
+</application>
